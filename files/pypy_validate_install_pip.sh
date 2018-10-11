@@ -19,10 +19,10 @@ echo "Checking PIP3 from binary"
 $HOME/.ansible/pypy/bin/pip3 --version
 
 echo "Checking easy_install3 from binary"
-$HOME/.ansible/.pypy/bin/easy_install3.5 --version
+$HOME/.ansible/.pypy/bin/easy_install-3.5 --version
 
 ln -f -s $HOME/.ansible/pypy/bin/pip3 $HOME/bin/pip
-ln -f -s $HOME/.ansible/pypy/bin/easy_install3.5 $HOME/bin/easy_install
+ln -f -s $HOME/.ansible/pypy/bin/easy_install-3.5 $HOME/bin/easy_install
 
 echo "Validating symlinked python commands"
 $HOME/pypy/bin/pypy --version
