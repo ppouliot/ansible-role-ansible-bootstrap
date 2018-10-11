@@ -1,4 +1,4 @@
-# ansible role: container-linux.bootstrap 
+# Ansible Role: container-linux.bootstrap 
 
 In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python. To get around this limitation we can install pypy, a lightweight python interpreter. The container-linux-bootstrap role will install pypy for us and we will update our inventory file to use the installed python interpreter.
 
