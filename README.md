@@ -1,38 +1,36 @@
-Role Name
-=========
+# Ansible Role Container-Linux Ansible Bootstrapper
 
-A brief description of the role goes here.
+In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python. To get around this limitation we can install pypy, a lightweight python interpreter. The container-linux-bootstrap role will install pypy for us and we will update our inventory file to use the installed python interpreter.
 
-Requirements
-------------
+## Installation
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+ansible-galaxy install ppouliot.container-linux_bootstrap
+Configure your project
 
-Role Variables
---------------
+Unlike a typical role, you need to configure Ansible to use an alternative python interpreter for container-linux hosts. This can be done by adding a container-linux group to your inventory file and setting the group's vars to use the new python interpreter. This way, you can use ansible to manage CoreOS and non-CoreOS hosts. Simply put every host that has CoreOS into the container-linux inventory group and it will automatically use the specified python interpreter.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```
+[container-linux]
+host-01
+host-02
 
-Dependencies
-------------
+[container-linux:vars]
+ansible_ssh_user=core
+ansible_python_interpreter=/home/core/bin/python
+```
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This will configure ansible to use the python interpreter at /home/core/bin/python which will be created by the container-linux-bootstrap role.
 
-Example Playbook
-----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Bootstrap Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Now you can simply add the following to your playbook file and include it in your site.yml so that it runs on all hosts in the container-linux group.
 
-License
--------
+```
+- hosts: container-linux
+  gather_facts: False
+  roles:
+    - ppouliot.container-linux-bootstrap
+```
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Make sure that gather_facts is set to false, otherwise ansible will try to first gather system facts using python which is not yet installed!
