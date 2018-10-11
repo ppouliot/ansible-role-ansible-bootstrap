@@ -12,6 +12,7 @@ then
   mkdir -p $HOME/.ansible/logs
   mkdir -p $HOME/.ansible/tmp
   mkdir -p $HOME/bin
+  chmod -R 0777 $HOME/.ansible
 fi
 
 BOOTSTRAP_LOGFILE=$HOME/.ansible/logs/bootstrap.log
@@ -40,3 +41,21 @@ chmod -R ugo+x $HOME/.ansible/pypy
 
 echo "Creating a symlink for easy use of python." 
 ln -f -s $HOME/.ansible/pypy/bin/pypy $HOME/bin/python
+
+echo "Installing pip"
+$HOME/.ansible/pypy/bin/pypy -m ensurepip ;
+
+echo "Checking PIP3 from binary"
+$HOME/.ansible/pypy/bin/pip3 --version
+
+echo "Checking easy_install3 from binary"
+$HOME/.ansible/.pypy/bin/easy_install-3.5 --version
+
+echo "Creating remainaing symlinks
+ln -f -s $HOME/.ansible/pypy/bin/pip3 $HOME/bin/pip
+ln -f -s $HOME/.ansible/pypy/bin/easy_install-3.5 $HOME/bin/easy_install
+
+echo "Validating symlinked python commands"
+$HOME/bin/pypy --version
+$HOME/bin/pip --version
+$HOME/bin/easy_install --version
