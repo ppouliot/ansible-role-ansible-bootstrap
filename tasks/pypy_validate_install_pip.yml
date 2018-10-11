@@ -1,0 +1,5 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: Bootstrapping PYPY on CoreOS/Flatcar for Ansible.
+  script: ../files/pypy_validate_install_pip.sh  creates=/home/core/console.txt
