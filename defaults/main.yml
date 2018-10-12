@@ -1,0 +1,5 @@
+---
+# defaults file for container-linux-bootstrap
+
+# Install PIP 
+enable_pip: True

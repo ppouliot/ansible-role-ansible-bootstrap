@@ -2,5 +2,9 @@
 
 # tasks file for container-linux-bootstrap
 
-- name: Deploy Pythong(PYPY), PIP, and EasyInstall to "Container Linux by CoreOS" or "Flatcar Linux by Kinvolk"
+- name: Deploy Python(PYPY) to "Container Linux by CoreOS" or "Flatcar Linux by Kinvolk"
   include_tasks: bootstrap_pypy_for_ansible.yml
+
+- name: Installing PIP, and EasyInstall to "Container Linux by CoreOS" or "Flatcar Linux by Kinvolk"
+  include_tasks: pypy_install_pip.yml
+  when: enable_pip == True
