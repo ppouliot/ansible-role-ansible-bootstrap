@@ -12,7 +12,6 @@ then
   mkdir -p $HOME/.ansible/logs
   mkdir -p $HOME/.ansible/tmp
   mkdir -p $HOME/bin
-  chmod -R 0777 $HOME/.ansible
 fi
 
 BOOTSTRAP_LOGFILE=$HOME/.ansible/logs/bootstrap.log
