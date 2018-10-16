@@ -13,4 +13,4 @@ galaxy_info:
     - name: CoreOS
       versions:
         - all
-dependencies:
+dependencies: []
