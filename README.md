@@ -44,6 +44,7 @@ Now you can simply add the following to your playbook file and include it in you
 ```
 - hosts: container-linux
   gather_facts: False
+  remote_user: core
   roles:
     - ppouliot.container-linux-bootstrap
 ```

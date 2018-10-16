@@ -2,7 +2,7 @@ galaxy_info:
   role_name: container-linux-bootstrap
   author: ppouliot
   description: A PYPY (and pip) deployment for bootstrapping Ansible on Container-Linux Platforms
-  license: license (Apache)
+  license: Apache
   version: 0.0.1
   min_ansible_version: 2.4
   dependencies:
