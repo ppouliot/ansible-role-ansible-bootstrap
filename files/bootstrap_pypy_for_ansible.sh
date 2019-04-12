@@ -43,3 +43,11 @@ ln -f -s $HOME/.ansible/pypy/bin/pypy $HOME/bin/python
 
 echo "Validating symlinked python commands"
 $HOME/bin/python --version
+
+echo "Adding HOME/bin to path"
+if [ ! -e $HOME/.bash_profile ];
+then
+  cat <<EOF > $HOME/.bash_profile
+export PATH=${HOME}/bin:$PATH
+EOF
+fi 
