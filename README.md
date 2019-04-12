@@ -1,7 +1,7 @@
 # Ansible Role: container-linux-bootstrap 
 ---------------------
 
-In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python. To get around this limitation pypy, a lightweight python interpreter, is installed. The container-linux-bootstrap role will install pypy, including pip, in the Container Linux's default 'core' user, and create symlinks for easy usage of the newly installed python stack.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.
+In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python.  Additonally when using jumpboxes that are managed by someone else you have limited access for software installation. To get around this limitation pypy, a lightweight python interpreter, is installed within the users home directory. The container-linux-bootstrap role will install pypy, including pip, in the Container Linux's default 'core' user, and create symlinks for easy usage of the newly installed python stack.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.
 
 ## Role Variables:
 ---------------------
