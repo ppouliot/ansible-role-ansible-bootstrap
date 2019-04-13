@@ -9,7 +9,7 @@
 
   - name: create ansible controler folder structure
     file:
-      path: "{{ ansible_facts['user_dir'] }}/ansible/{{ item }}"
+      path: "~/ansible/{{ item }}"
       state: directory
       mode: 0755
     with_items:
