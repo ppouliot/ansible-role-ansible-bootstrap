@@ -7,7 +7,8 @@
       state: directory
       mode: 0755
 
-  - file:
+  - name: create ansible controler folder structure
+    file:
       path: "{{ ansible_user_dir }}/ansible/{{ item }}"
       state: directory
       mode: 0755
@@ -22,8 +23,8 @@
       - roles
       - tasks
       - templates
-
-  - template:
+  - name: Template for ansible.cfg
+    template:
       src: "ansible.cfg.j2"
       dest: "{{ ansible_user_dir }}/ansible/ansible.cfg"
       owner: "{{ ansible_user_id }}"
