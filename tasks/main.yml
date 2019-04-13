@@ -7,12 +7,12 @@
 
 - name: Installing PIP, and EasyInstall to {{ ansible_user_dir }}
   include_tasks: pypy_install_pip.yml
-  when: enable_pip == True
+  when: enable_pip
 
 - name: Installing ansible to {{ ansible_user_dir }}
   include_tasks: ansible_install.yml
-  when: enable_ansible == True
+  when: enable_ansible
 
 - name: Installing ansible folders to {{ ansible_user_dir }}
   include_tasks: ansible_folders.yml
-  when: enable_ansible_folders == True
+  when: enable_ansible_folders
