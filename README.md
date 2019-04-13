@@ -1,7 +1,7 @@
-# Ansible Role: container-linux-bootstrap 
+# Ansible Role: ansible-bootstrap 
 ---------------------
 
-In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python. To get around this limitation pypy, a lightweight python interpreter, is installed. The container-linux-bootstrap role will install pypy, including pip, in the Container Linux's default 'core' user, and create symlinks for easy usage of the newly installed python stack.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.
+In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python. To get around this limitation pypy, a lightweight python interpreter, is installed. The ansible-bootstrap role will install pypy, including pip, in the Container Linux's default 'core' user, and create symlinks for easy usage of the newly installed python stack.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.
 
 ## Role Variables:
 ---------------------
@@ -16,7 +16,7 @@ enable_pip: True
 ## Installation
 ---------------------
 
-ansible-galaxy install ppouliot.container-linux-bootstrap
+ansible-galaxy install ppouliot.ansible-bootstrap
 Configure your project
 
 Unlike a typical role, you need to configure Ansible to use an alternative python interpreter for container-linux hosts. This can be done by adding a container-linux group to your inventory file and setting the group's vars to use the new python interpreter. This way, you can use ansible to manage CoreOS and non-CoreOS hosts. Simply put every host that has CoreOS into the container-linux inventory group and it will automatically use the specified python interpreter.
@@ -33,7 +33,7 @@ ansible_python_interpreter=/home/core/bin/python
 
 ```
 
-This will configure ansible to use the python interpreter at /home/core/bin/python which will be created by the container-linux-bootstrap role.
+This will configure ansible to use the python interpreter at /home/core/bin/python which will be created by the ansible-bootstrap role.
 
 
 ## Bootstrap Playbook
@@ -46,7 +46,7 @@ Now you can simply add the following to your playbook file and include it in you
   gather_facts: False
   remote_user: core
   roles:
-    - ppouliot.container-linux-bootstrap
+    - ppouliot.ansible-bootstrap
 ```
 
 Make sure that gather_facts is set to false, otherwise ansible will try to first gather system facts using python which is not yet installed!

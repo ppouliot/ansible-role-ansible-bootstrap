@@ -3,3 +3,8 @@
 
 # Install PIP 
 enable_pip: True
+enable_ansible: False
+enable_ansible_plugin_azure: False
+enable_ansible_plugin_consul: False
+enable_ansible_plugin_d42: False
+enable_ansible_plugin_d42: False

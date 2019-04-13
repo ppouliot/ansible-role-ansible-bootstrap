@@ -2,4 +2,4 @@
 ---
 
 - name: Bootstrapping PYPY on CoreOS/Flatcar for Ansible.
-  script: ../files/bootstrap_pypy_for_ansible.sh  creates=/home/core/console.txt
+  script: ../files/pypy_install.sh  creates=/home/core/console.txt

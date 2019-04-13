@@ -1,0 +1,118 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: Playbook to download dynamic ansible_plugins_inventory_url plugins
+  hosts: localhost
+  vars:
+    local_home: "{{ ansible_env.HOME }}"
+    local_user: "{{ ansible_env.USER }}"
+    # ansible_inventory_path: "{{ local_home }}/ansible/inventory"
+    # ansible_library_path: "{{ local_home }}/ansible/library"
+    # ansible_files: "{{ local_home }}/ansible/files"
+    # ansible_keys: "{{ local_home }}/ansible/keys"
+    # ansible_templates: "{{ local_home }}/ansible/templates"
+    ansible_inventory_path: "/etc/ansible/inventory"
+    ansible_library_path: "/etc/ansible/library"
+    ansible_templates: "/etc/ansible/templates"
+    ansible_files: "/etc/ansible/files"
+    ansible_keys: "/etc/ansible/keys"
+    ansible_contrib_inventory_url: "https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory"
+    ansible_plugins_inventory_url: "https://raw.githubusercontent.com/ansible/ansible/devel/lib/ansible/plugins/inventory/"
+    #azure_rm_resource_groups:
+    #azure_rm_locations:
+    azure_rm_resource_groups: "containerlinux-resource-group"
+    azure_rm_locations: eastus
+    consul_io_url:
+    openstack_cloud_name: fra1_openstack
+    openstack_auth_url: https://fra1-openstack.intra.rakuten-it.com
+    openstack_username: peter.pouliot
+    openstack_password : 5wSfH5YmvJ27
+    openstack_project_name: dev
+    openstack_region_name:
+    device42_user: peter.pouliot
+    device42_passwd: B@b@b03y
+    device42_url: https://device42.rakops.com
+    netbox_api_endpoint:  http://localhost:8000
+  roles:
+    # Install Azure python Dependencies from Azure/azure_modules
+    - role: azure.azure_modules
+  tasks:
+  - name: "{{ ansible_inventory_path }}"
+    file:
+      path: "{{ ansible_inventory_path }}"
+      state: directory
+      mode: 0755
+
+  - name: "{{ ansible_library_path }}"
+    file:
+      path: "{{ ansible_library_path }}"
+      state: directory
+      mode: 0755
+
+  - name: "{{ ansible_files }}"
+    file:
+      path: "{{ ansible_files }}"
+      state: directory
+      mode: 0755
+
+  - name: "{{ ansible_keys }}"
+    file:
+      path: "{{ ansible_keys }}"
+      state: directory
+
+  - name: azure_rm.py
+    get_url: 
+      url: "{{ ansible_plugins_inventory_url }}/azure_rm.py"
+      dest: "{{ ansible_library_path }}/azure_rm.py"
+      owner: "{{ local_user }}"
+      group: "{{ local_user }}"
+      mode: "0755"
+
+  - name: nmap.py
+    get_url: 
+      url: "{{ ansible_plugins_inventory_url }}/nmap.py"
+      dest: "{{ ansible_library_path }}/openstack.py"
+      owner: "{{ local_user }}"
+      group: "{{ local_user }}"
+
+  - name: netbox.py
+    get_url: 
+      url: "{{ ansible_plugins_inventory_url }}/netbox.py"
+      dest: "{{ ansible_library_path }}/netbox.py"
+      owner: "{{ local_user }}"
+      group: "{{ local_user }}"
+
+  - name: openstack.py
+    get_url: 
+      url: "{{ ansible_plugins_inventory_url }}/openstack.py"
+      dest: "{{ ansible_library_path }}/openstack.py"
+      owner: "{{ local_user }}"
+      group: "{{ local_user }}"
+      mode: "0755"
+
+  - name: tower.py
+    get_url: 
+      url: "{{ ansible_plugins_inventory_url }}/tower.py"
+      dest: "{{ ansible_library_path }}/tower.py"
+      owner: "{{ local_user }}"
+      group: "{{ local_user }}"
+      mode: "0755"
+
+  - name: Unifi Controller Facts Module
+    git:
+      repo: https://github.com/ppouliot/ansible_module-unifi_controller_facts.git
+      dest: "{{ ansible_library_path }}/unifi_controller_facts"
+      clone: yes
+      update: yes
+      force: yes
+
+  - name: Mitogen For Ansible
+    unarchive:
+      src: "https://github.com/dw/mitogen/archive/v0.2.6.tar.gz"
+      dest: "{{ ansible_library_path }}/"
+      remote_src: yes
+
+  - name: Ansible-Galaxy Install Requirements
+    command: 'ansible-galaxy install -r requirements.yml --force'
+    args:
+      chdir: /etc/ansible

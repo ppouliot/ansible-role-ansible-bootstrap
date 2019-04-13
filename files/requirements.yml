@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-galaxyi
+#---
+# This is used to manage Ansible role dependences
+# http://docs.ansible.com/galaxy.html#installing-multiple-roles-from-a-file
+# Install with: `ansible-galaxy install -r requirements.yml`
+
+# Azure Modules
+- name: Azure.azure_preview_modules
+  src: Azure.azure_preview_modules
+
+- name: azure.azure_modules
+  src: azure.azure_modules
