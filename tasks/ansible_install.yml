@@ -9,7 +9,8 @@
   with_items: 
     - "ansible"
     - "selinux"
-- file:
+- name: Creating a directory structure for ansible code
+  file:
     src: "{{ ansible_user_dir }}.ansible/pypy/bin/{{ item }}"
     dest: "{{ ansible_user_dir }}/bin/{{ item }}"
     state: link
