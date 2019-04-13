@@ -6,9 +6,7 @@
     chdir: "{{ ansible_user_dir }}"
     executable: "{{ ansible_user_dir }}/bin/pip"
     name: "{{ item }}"
-  with_items: 
-    - "ansible"
-    - "selinux"
+  with_items: ["ansible", "selinux"]
 - name: Creating a directory structure for ansible code
   file:
     src: "{{ ansible_user_dir }}.ansible/pypy/bin/{{ item }}"
