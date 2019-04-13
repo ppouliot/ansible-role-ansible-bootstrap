@@ -3,7 +3,7 @@
 # tasks file for container-linux-bootstrap
 
 - name: Deploy Python(PYPY) to  {{ ansible_user_dir }}
-  include_tasks: bootstrap_pypy_for_ansible.yml
+  include_tasks: pypy_install.yml
 
 - name: Installing PIP, and EasyInstall to {{ ansible_user_dir }}
   include_tasks: pypy_install_pip.yml
