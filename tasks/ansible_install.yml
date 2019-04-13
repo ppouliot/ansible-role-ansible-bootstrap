@@ -3,9 +3,9 @@
 
 - name: Installing ansible python library using Ansible pip module and symlinking to HOME/bin
   pip:
-    chdir: {{ ansible_user_dir }}
-    executable: {{ ansible_user_dir }}/bin/pip
-    name: {{ item }}
+    chdir: "{{ ansible_user_dir }}"
+    executable: "{{ ansible_user_dir }}/bin/pip"
+    name: "{{ item }}"
   with_items: 
     - "ansible"
     - "selinux"
