@@ -1,15 +1,15 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-  - name: "Creating ansible working directories in {{ ansible_user_dir }}"
+  - name: "Creating ansible working directories in {{ ansible_facts['user_dir'] }}"
     file:
-      path: "{{ ansible_user_dir }}/ansible"
+      path: "{{ ansible_facts['user_dir'] }}/ansible"
       state: directory
       mode: 0755
 
   - name: create ansible controler folder structure
     file:
-      path: "{{ ansible_user_dir }}/ansible/{{ item }}"
+      path: "{{ ansible_facts['user_dir'] }}/ansible/{{ item }}"
       state: directory
       mode: 0755
     with_items:
@@ -26,7 +26,7 @@
   - name: Template for ansible.cfg
     template:
       src: "ansible.cfg.j2"
-      dest: "{{ ansible_user_dir }}/ansible/ansible.cfg"
+      dest: "{{ ansible_facts['user_dir'] }}/ansible/ansible.cfg"
       owner: "{{ ansible_user_id }}"
       group: "{{ ansible_user_id }}"
       mode: "0755"
@@ -34,4 +34,4 @@
 #  - name: Ansible-Galaxy Install Requirements
 #    command: 'ansible-galaxy install -r requirements.yml --force'
 #    args:
-#      chdir: "{{ ansible_user_dir }}/ansible"
+#      chdir: "{{ ansible_facts['user_dir'] }}/ansible"
