@@ -3,7 +3,7 @@
 
   - name: "Creating ansible working directories in {{ ansible_facts['user_dir'] }}"
     file:
-      path: "{{ ansible_facts['user_dir'] }}/ansible"
+      path: "~/ansible"
       state: directory
       mode: 0755
 
@@ -26,9 +26,9 @@
   - name: Template for ansible.cfg
     template:
       src: "ansible.cfg.j2"
-      dest: "{{ ansible_facts['user_dir'] }}/ansible/ansible.cfg"
-      owner: "{{ ansible_user_id }}"
-      group: "{{ ansible_user_id }}"
+      dest: "~/ansible/ansible.cfg"
+      owner: "{{ ansible_fact[user][id] }}"
+      group: "{{ ansible_fact[user][id] }}"
       mode: "0755"
 
 #  - name: Ansible-Galaxy Install Requirements
