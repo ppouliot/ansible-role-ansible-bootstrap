@@ -1,0 +1,26 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: Installing ansible python library using Ansible pip module and symlinking to HOME/bin
+  pip:
+    chdir: {{ ansible_user_dir }}
+    executable: {{ ansible_user_dir }}/bin/pip
+    name: {{ item }}
+  with_items: 
+    - "ansible"
+    - "selinux"
+- file:
+    src: "{{ ansible_user_dir }}.ansible/pypy/bin/{{ item }}"
+    dest: "{{ ansible_user_dir }}/bin/{{ item }}"
+    state: link
+  with_items:
+    - "ansible"
+    - "ansible-connection"
+    - "ansible-doc"
+    - "ansible-inventory"
+    - "ansible-pull"
+    - "ansible-config"
+    - "ansible-console"
+    - "ansible-galaxy"
+    - "ansible-playbook"
+    - "ansible-vault"
