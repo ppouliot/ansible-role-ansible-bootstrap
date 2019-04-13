@@ -27,9 +27,6 @@
     template:
       src: "ansible.cfg.j2"
       dest: "~/ansible/ansible.cfg"
-      owner: "{{ ansible_fact[user][id] }}"
-      group: "{{ ansible_fact[user][id] }}"
-      mode: "0755"
 
 #  - name: Ansible-Galaxy Install Requirements
 #    command: 'ansible-galaxy install -r requirements.yml --force'
