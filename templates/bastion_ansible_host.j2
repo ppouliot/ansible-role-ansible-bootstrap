@@ -1,4 +1,4 @@
 # A host/device that Ansible is managing when connecting through the Bastion Host
 Host {{ bastion_ansible_host }}
-  ProxyCommand ssh -W %h:%p {{bastion_user }}@{{ bastion_host_ip }}
+  ProxyCommand ssh -W %h:%p {{bastion_user }}@{{ bastion_ip }}
   IdentityFile {{ bastion_ansible_host_ssh_key }}
