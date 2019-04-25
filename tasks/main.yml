@@ -16,3 +16,11 @@
 - name: Installing ansible folders to {{ ansible_user_dir }}
   include_tasks: ansible_folders.yml
   when: enable_ansible_folders
+
+- name: Configuration for using a bastion host with ansible { ansible_user_dir }}/ssh.cfg
+  include_tasks: bastion_host.yml
+  when:
+    - {{ bastion_hostname }}
+    - {{ bastion_ip }}
+    - {{ bastion_user }}
+    - {{ bastion_host_ssh_key }}

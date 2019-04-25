@@ -1,0 +1,8 @@
+# Bastion Host to use ansible through
+Host {{ bastion_ip }}
+  Hostname {{ bastion_hostname }}
+  User {{ bastion_user }}
+  IdentityFile {{ bastion_host_ssh_key }}
+  ControlMaster auto
+  ControlPath ~/.ssh/ansible-%r@%h:%p
+  ControlPersist 5m
