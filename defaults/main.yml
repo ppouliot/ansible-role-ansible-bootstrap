@@ -5,6 +5,7 @@
 enable_pip: True
 enable_ansible: False
 enable_ansible_folders: False
+enable_bastion: False
 
 # If using a Bastion Host with Ansible
 bastion_ip: 192.168.1.1

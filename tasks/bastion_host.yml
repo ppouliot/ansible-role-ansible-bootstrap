@@ -6,13 +6,9 @@
       dest: ~/ansible/ssh.cfg
       block: "{{ lookup ('template', 'bastion_host.j2') }}"
       marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{ bastion_host }}"
-    when:
-      - {{ enable_ansible_folders }}
 
   - name: Bastion Ansible Host Configuration
     blockinfile:
       dest: ~/ansible/ssh.cfg
       block: "{{ lookup ('template', 'bastion_ansible_host.j2') }}"
       marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{ bastion_ansible_host }}"
-    when:
-      - {{ enable_ansible_folders }}

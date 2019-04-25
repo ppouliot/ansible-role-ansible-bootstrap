@@ -19,8 +19,4 @@
 
 - name: Configuration for using a bastion host with ansible { ansible_user_dir }}/ssh.cfg
   include_tasks: bastion_host.yml
-  when:
-    - {{ bastion_hostname }}
-    - {{ bastion_ip }}
-    - {{ bastion_user }}
-    - {{ bastion_host_ssh_key }}
+  when: enable_bastion
