@@ -28,6 +28,13 @@
       src: "ansible.cfg.j2"
       dest: "~/ansible/ansible.cfg"
 
+  - name: Template for ansible/ssh.cfg
+    template:
+      src: "ssh.cfg.j2"
+      dest: "~/ansible/ssh.cfg"
+
+#  - name: Ansible-Galaxy Install Requirements
+
 #  - name: Ansible-Galaxy Install Requirements
 #    command: 'ansible-galaxy install -r requirements.yml --force'
 #    args:
