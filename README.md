@@ -28,7 +28,7 @@ Setting this value creates the folder infrastructure and configuration files for
 ```
 enable_ansible_folders: True
 ```
-### Enable bastion
+### Enable Bastion  (for Ansible SSH Proxying)
 Setting this value creates an asible configration for using ansible with ssh proxying through a bastion host in the ansible.  Default value is set to 'False' 
 
 ```
