@@ -23,3 +23,9 @@ ln -f -s $HOME/.ansible/pypy/bin/easy_install-3.5 $HOME/bin/easy_install
 echo "Validating symlinked pip and easy_install commands"
 $HOME/bin/pip --version
 $HOME/bin/easy_install --version
+
+echo "Upgrade pip to the latest version"
+$HOME/bin/pip install --upgrade pip
+
+echo "Checking new version"
+$HOME/bin/pip --version
