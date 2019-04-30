@@ -6,7 +6,7 @@
     chdir: "~"
     executable: "~/bin/pip"
     name: "ansible"
-- name: Creating a directory structure for ansible code
+- name: Creating Symlinks for the Ansible Commands
   file:
     src: "~/.ansible/pypy/bin/{{ item }}"
     dest: "~/bin/{{ item }}"

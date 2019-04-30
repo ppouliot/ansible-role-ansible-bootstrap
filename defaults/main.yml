@@ -14,3 +14,4 @@ bastion_user: bwayne
 bastion_host_ssh_key: "~/.ssh/id_rsa"
 bastion_ansible_hosts: 10.1.1.*
 bastion_ansible_host_ssh_key: "{{ bastion_host_ssh_key }}"
+
