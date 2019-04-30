@@ -362,7 +362,7 @@ host_key_checking = False
 #host_key_auto_add = True
 
 [ssh_connection]
-{% if bastion_host is defined %}
+{% if bastion_hostname is defined %}
 # SSH Settings for using Bastion Host
 # Hostname:  {{ bastion_hostname }}
 # IP: {{ bastion_ip }}
