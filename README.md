@@ -16,6 +16,32 @@ Setting this value controls the installation of PIP and required tooling on the 
 enable_pip: True
 ```
 
+
+### Enable Ansible
+Setting this value controls the installation of ansible using the newly deployed pypy environment.  Default value is set to 'False' 
+
+```
+enable_ansible: True
+```
+### Enable Ansible Folders
+Setting this value creates the folder infrastructure and configuration files for an ansible contoller deployed into the home directory as the rest of the Tooling.  Default value is set to 'False' 
+
+```
+enable_ansible_folders: True
+```
+
+### Enable bastion
+Setting this value creates an asible configration for using ansible with ssh proxying through a bastion host in the ansible.  Default value is set to 'False' 
+
+```
+enable_bastion: True
+bastion_hostname: bastion.contoso.ltd # Bastion Host FQDN
+bastion_user: bwayne # Bastion Host User
+bastion_ip: 172.168.1.10 # Bastion Host IP address
+bastion_ansible_host: 192.168.1.* # Hosts on the other side of the Bastion
+```
+
+
 ## Installation
 ---------------------
 
@@ -33,6 +59,21 @@ host-02
 enable_pip=True
 ansible_ssh_user=core
 ansible_python_interpreter=/home/core/bin/python
+ansible_connection= ssh
+ansible_ssh_private_key_file=/etc/ansible/keys/id_rsa
+
+enable_ansible=True
+enable_ansible_folders=True
+enable_bastion=True
+
+bastion_hostname=bastion.contoso.ltd
+bastion_user=bwayne
+bastion_ip=172.168.1.10
+bastion_ansible_host=192.168.1.*
+
+
+
+
 
 ```
 
