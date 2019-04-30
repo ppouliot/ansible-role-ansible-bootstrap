@@ -1,11 +1,11 @@
 # Ansible Role: ansible-bootstrap 
 ---------------------
 
-In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python.  Additonally when using jumpboxes that are managed by someone else you have limited access for software installation. 
+In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python.  Additonally when using jumpboxes that are managed by someone else you have limited access for software installation and may only be able to install into a single directory structure.
 
 To get around this limitation pypy, a lightweight python interpreter, is installed. The ansible-bootstrap role will install pypy, including pip, in the Container Linux's default 'core' user, and create symlinks for easy usage of the newly installed python stack.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.
 
-
+Additionally it becomes extremely usefull to bootstrap contained ansible controller structure into this model.   As such additional features have been added for both bootstraping the pypy for ansible control as well as ansible as a contoller with ssh bastion host proxing enabled.
 ## Role Variables:
 ---------------------
 
@@ -15,21 +15,19 @@ Setting this value controls the installation of PIP and required tooling on the 
 ```
 enable_pip: True
 ```
-
-
 ### Enable Ansible
-Setting this value controls the installation of ansible using the newly deployed pypy environment.  Default value is set to 'False' 
+Setting this value controls the installation of ansible using the newly deployed pypy environment. Additionally symlinks are created in ~/bin for application, and added to use the users path statement in .bashrc. Default value is set to 'False' 
 
 ```
 enable_ansible: True
 ```
+
 ### Enable Ansible Folders
 Setting this value creates the folder infrastructure and configuration files for an ansible contoller deployed into the home directory as the rest of the Tooling.  Default value is set to 'False' 
 
 ```
 enable_ansible_folders: True
 ```
-
 ### Enable bastion
 Setting this value creates an asible configration for using ansible with ssh proxying through a bastion host in the ansible.  Default value is set to 'False' 
 
@@ -41,12 +39,16 @@ bastion_ip: 172.168.1.10 # Bastion Host IP address
 bastion_ansible_host: 192.168.1.* # Hosts on the other side of the Bastion
 ```
 
-
 ## Installation
 ---------------------
 
+Use ansible-galaxy to install the latest module.
+
+```
 ansible-galaxy install ppouliot.ansible-bootstrap
-Configure your project
+```
+
+## Configure your project
 
 Unlike a typical role, you need to configure Ansible to use an alternative python interpreter for container-linux hosts. This can be done by adding a container-linux group to your inventory file and setting the group's vars to use the new python interpreter. This way, you can use ansible to manage CoreOS and non-CoreOS hosts. Simply put every host that has CoreOS into the container-linux inventory group and it will automatically use the specified python interpreter.
 
@@ -70,11 +72,6 @@ bastion_hostname=bastion.contoso.ltd
 bastion_user=bwayne
 bastion_ip=172.168.1.10
 bastion_ansible_host=192.168.1.*
-
-
-
-
-
 ```
 
 This will configure ansible to use the python interpreter at /home/core/bin/python which will be created by the ansible-bootstrap role.
