@@ -14,7 +14,7 @@
   when: enable_ansible
 
 - name: Installing molecule for ansible testing to {{ ansible_user_dir }}
-  include_tasks: ansible_install.yml
+  include_tasks: molecule_install.yml
   when: enable_molecule
 
 - name: Installing ansible folders to {{ ansible_user_dir }}
