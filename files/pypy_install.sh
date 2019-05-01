@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
-set -x
 
-# Set PYTHON 3 Binary Name
+# Set PYTHON 3 Stable Portable Binary Name
 PYPY_PORTABLE_VERSION='pypy3.5-6.0.0-linux_x86_64-portable'
 
-echo "Testing for .ansible"
+echo "Testing for .ansible for bootstrap operations
 if [ ! -d $HOME/.ansible ];
 then
-  echo "Creating folder structure for bootstrapping ansible on Container-Linux Platforms"
+  echo "Creating folder structure for ansible operations"
   mkdir -p $HOME/.ansible
   mkdir -p $HOME/.ansible/logs
   mkdir -p $HOME/.ansible/tmp
+fi
+
+echo "Testing for $HOME/bin"
+if [ ! -d $HOME/bin ];
+then
+  echo "Creating $HOME/bin for local applications"
   mkdir -p $HOME/bin
 fi
 

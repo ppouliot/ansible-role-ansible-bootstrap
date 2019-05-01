@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 PYPY_INSTALL_PIP_LOGFILE=$HOME/.ansible/logs/pypy_install_pip.log
 exec >> $PYPY_INSTALL_PIP_LOGFILE 2>&1
@@ -13,6 +12,12 @@ $HOME/.ansible/pypy/bin/pypy -m ensurepip ;
 echo "Checking PIP3 from binary"
 $HOME/.ansible/pypy/bin/pip3 --version
 
+echo "Upgrading pip to the latest version from binary"
+$HOME/.ansible/pypy/bin/pip3 install --upgrade pip
+
+echo "Checking new version"
+$HOME/.ansible/pypy/bin/pip3 --version
+
 echo "Checking easy_install3 from binary"
 $HOME/.ansible/.pypy/bin/easy_install-3.5 --version
 
@@ -23,9 +28,3 @@ ln -f -s $HOME/.ansible/pypy/bin/easy_install-3.5 $HOME/bin/easy_install
 echo "Validating symlinked pip and easy_install commands"
 $HOME/bin/pip --version
 $HOME/bin/easy_install --version
-
-echo "Upgrade pip to the latest version"
-$HOME/bin/pip install --upgrade pip
-
-echo "Checking new version"
-$HOME/bin/pip --version

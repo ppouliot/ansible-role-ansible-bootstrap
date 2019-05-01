@@ -4,6 +4,7 @@
 # Install PIP 
 enable_pip: True
 enable_ansible: False
+enable_molecule: False
 enable_ansible_folders: False
 enable_bastion: False
 
