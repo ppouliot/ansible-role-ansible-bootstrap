@@ -11,4 +11,7 @@
     src: "~/.ansible/pypy/bin/{{ item }}"
     dest: "~/bin/{{ item }}"
     state: link
-  with_items: [ "ansible", "ansible-connection", "ansible-doc", "ansible-inventory", "ansible-pull", "ansible-config", "ansible-console", "ansible-galaxy", "ansible-playbook", "ansible-vault" ]
+  with_items: [ "ansible", "ansible-connection", "ansible-doc",
+    "ansible-inventory", "ansible-pull", "ansible-config",
+    "ansible-console", "ansible-galaxy", "ansible-playbook",
+    "ansible-vault" ]
