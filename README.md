@@ -76,7 +76,6 @@ bastion_ansible_host=192.168.1.*
 
 This will configure ansible to use the python interpreter at /home/core/bin/python which will be created by the ansible-bootstrap role.
 
-
 ## Bootstrap Playbook
 ---------------------
 
@@ -89,7 +88,6 @@ Now you can simply add the following to your playbook file and include it in you
   roles:
     - ppouliot.ansible-bootstrap
 ```
-
 Make sure that gather_facts is set to false, otherwise ansible will try to first gather system facts using python which is not yet installed!
 
 ## Contributors
@@ -115,4 +113,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
