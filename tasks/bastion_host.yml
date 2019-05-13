@@ -1,6 +1,5 @@
 #!/usr/bin/env ansible-playbook
 ---
-
   - name: Bastion Host Configuration
     blockinfile:
       dest: ~/ansible/ssh.cfg

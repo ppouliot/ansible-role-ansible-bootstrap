@@ -1,6 +1,5 @@
 #!/usr/bin/env molecule-playbook
 ---
-
 - name: Installing molecule python library for ansible role testing using pip and symlinking to HOME/bin
   pip:
     chdir: "~"

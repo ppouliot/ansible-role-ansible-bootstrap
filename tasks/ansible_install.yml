@@ -1,6 +1,5 @@
 #!/usr/bin/env ansible-playbook
 ---
-
 - name: Installing ansible python library using Ansible pip module and symlinking to HOME/bin
   pip:
     chdir: "~"

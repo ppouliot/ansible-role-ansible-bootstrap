@@ -1,26 +1,19 @@
 ---
-
 # tasks file for container-linux-bootstrap
-
 - name: Deploy Python(PYPY) to  {{ ansible_user_dir }}
   include_tasks: pypy_install.yml
-
 - name: Installing PIP, and EasyInstall to {{ ansible_user_dir }}
   include_tasks: pypy_install_pip.yml
   when: enable_pip
-
 - name: Installing ansible to {{ ansible_user_dir }}
   include_tasks: ansible_install.yml
   when: enable_ansible
-
 - name: Installing molecule for ansible testing to {{ ansible_user_dir }}
   include_tasks: molecule_install.yml
   when: enable_molecule
-
 - name: Installing ansible folders to {{ ansible_user_dir }}
   include_tasks: ansible_folders.yml
   when: enable_ansible_folders
-
 - name: Configuration for using a bastion host with ansible { ansible_user_dir }}/ssh.cfg
   include_tasks: bastion_host.yml
   when: enable_bastion
