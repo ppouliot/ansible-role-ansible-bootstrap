@@ -1,6 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Installing ansible python library using Ansible pip module and symlinking to HOME/bin
+- name: Install ansible using Ansible pip module and symlinking to HOME/bin
   pip:
     chdir: "~"
     executable: "~/bin/pip"
@@ -10,7 +10,8 @@
     src: "~/.ansible/pypy/bin/{{ item }}"
     dest: "~/bin/{{ item }}"
     state: link
-  with_items: [ "ansible", "ansible-connection", "ansible-doc",
+  with_items: [
+    "ansible", "ansible-connection", "ansible-doc",
     "ansible-inventory", "ansible-pull", "ansible-config",
     "ansible-console", "ansible-galaxy", "ansible-playbook",
-    "ansible-vault" ]
+    "ansible-vault"]

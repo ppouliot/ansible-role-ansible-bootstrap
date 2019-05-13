@@ -1,11 +1,11 @@
 ---
 # defaults file for container-linux-bootstrap
-# Install PIP 
-enable_pip: True
-enable_ansible: False
-enable_molecule: False
-enable_ansible_folders: False
-enable_bastion: False
+# Install PIP
+enable_pip: true
+enable_ansible: false
+enable_molecule: false
+enable_ansible_folders: false
+enable_bastion: false
 # If using a Bastion Host with Ansible
 bastion_ip: 192.168.1.1
 bastion_hostname: jumpbox.contoso.tld
@@ -13,4 +13,3 @@ bastion_user: bwayne
 bastion_host_ssh_key: "~/.ssh/id_rsa"
 bastion_ansible_hosts: 10.1.1.*
 bastion_ansible_host_ssh_key: "{{ bastion_host_ssh_key }}"
-

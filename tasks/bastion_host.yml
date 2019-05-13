@@ -1,12 +1,12 @@
 #!/usr/bin/env ansible-playbook
 ---
-  - name: Bastion Host Configuration
-    blockinfile:
-      dest: ~/ansible/ssh.cfg
-      block: "{{ lookup ('template', 'bastion_host.j2') }}"
-      marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{ bastion_hostname }}"
-  - name: Bastion Ansible Host Configuration
-    blockinfile:
-      dest: ~/ansible/ssh.cfg
-      block: "{{ lookup ('template', 'bastion_ansible_host.j2') }}"
-      marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{ bastion_ansible_host }}"
+- name: Bastion Host Configuration
+  blockinfile:
+    dest: ~/ansible/ssh.cfg
+    block: "{{ lookup ('template', 'bastion_host.j2') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{ bastion_hostname }}"
+- name: Bastion Ansible Host Configuration
+  blockinfile:
+    dest: ~/ansible/ssh.cfg
+    block: "{{ lookup ('template', 'bastion_ansible_host.j2') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{ bastion_ansible_host }}"

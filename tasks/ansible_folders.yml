@@ -1,31 +1,31 @@
 #!/usr/bin/env ansible-playbook
 ---
-  - name: "Creating ansible working directories in {{ ansible_facts['user_dir'] }}"
-    file:
-      path: "~/ansible"
-      state: directory
-      mode: 0755
-  - name: create ansible controler folder structure
-    file:
-      path: "~/ansible/{{ item }}"
-      state: directory
-      mode: 0755
-    with_items:
-      - files
-      - group_vars
-      - host_vars
-      - inventory
-      - keys
-      - library
-      - playbooks
-      - roles
-      - tasks
-      - templates
-  - name: Template for ansible.cfg
-    template:
-      src: "ansible.cfg.j2"
-      dest: "~/ansible/ansible.cfg"
-  - name: Template for ansible/ssh.cfg
-    template:
-      src: "ssh.cfg.j2"
-      dest: "~/ansible/ssh.cfg"
+- name: "Ansible working directories in {{ ansible_facts['user_dir'] }}"
+  file:
+    path: "~/ansible"
+    state: directory
+    mode: 0755
+- name: create ansible controler folder structure
+  file:
+    path: "~/ansible/{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - files
+    - group_vars
+    - host_vars
+    - inventory
+    - keys
+    - library
+    - playbooks
+    - roles
+    - tasks
+    - templates
+- name: Template for ansible.cfg
+  template:
+    src: "ansible.cfg.j2"
+    dest: "~/ansible/ansible.cfg"
+- name: Template for ansible/ssh.cfg
+  template:
+    src: "ssh.cfg.j2"
+    dest: "~/ansible/ssh.cfg"
