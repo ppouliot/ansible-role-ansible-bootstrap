@@ -1,4 +1,4 @@
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-ppouliot.ansible_bootstrap-660198.svg?style=flat)](https://galaxy.ansible.com/ppouliot/ansible_bootstrap/)
+[![Ansible Galaxy](https://img.shields.io/ansible/role/3078.svg?style=flat)](https://galaxy.ansible.com/ppouliot/ansible_bootstrap/)
 
 # Ansible Role: ansible-bootstrap 
 ---------------------
