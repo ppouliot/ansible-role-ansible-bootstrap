@@ -30,6 +30,12 @@ Setting this value creates the folder infrastructure and configuration files for
 ```
 enable_ansible_folders: True
 ```
+### Enable Ansible Common Role Folders
+Setting this value creates the folder infrastructure for a common role in ~/ansible/roles/common using ansible-galaxy.  Default value is set to 'False' 
+
+```
+enable_ansible_common_role: True
+```
 ### Enable Bastion  (for Ansible SSH Proxying)
 Setting this value creates an asible configration for using ansible with ssh proxying through a bastion host in the ansible/ssh.cfg file.  Default value is set to 'False' 
 

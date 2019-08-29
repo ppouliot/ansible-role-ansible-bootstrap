@@ -1,0 +1,6 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Create a default common role structure in ~/ansible/roles/common
+  command: ~/bin/ansible-galaxy common
+    chdir: ~/ansible/roles
+    creates: ~/ansible/roles/common

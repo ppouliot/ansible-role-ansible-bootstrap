@@ -5,6 +5,7 @@ enable_pip: true
 enable_ansible: false
 enable_molecule: false
 enable_ansible_folders: false
+enable_ansible_common_role: false
 enable_bastion: false
 # If using a Bastion Host with Ansible
 bastion_ip: 192.168.1.1

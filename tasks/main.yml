@@ -20,6 +20,10 @@
   include_tasks: ansible_folders.yml
   when: enable_ansible_folders
 
+- name: Installing ansible common role folder structure to {{ ansible_user_dir }}/ansible/roles/common
+  include_tasks: ansible_common_role.yml
+  when: enable_ansible_common_role
+
 - name: Config for a bastion host with ansible { ansible_user_dir }}/ssh.cfg
   include_tasks: bastion_host.yml
   when: enable_bastion
