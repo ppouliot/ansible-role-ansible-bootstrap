@@ -5,7 +5,7 @@
 
 In order to effectively run ansible, the target machine needs to have a python interpreter. CoreOS and Flatcar Linux machines are minimal and do not ship with any version of python.  Additonally when using jumpboxes that are managed by someone else you have limited access for software installation and may only be able to install into a single directory structure.
 
-To get around this limitation pypy, a lightweight python interpreter, is installed. The ansible-bootstrap role will install pypy, including pip, in the users home directory, create symlinks for easy usage of the newly installed python stack, and adjust paths.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.
+To get around this limitation, a [portable version of pypy](https://github.com/squeaky-pl/portable-pypy), a lightweight python interpreter, is installed. The ansible-bootstrap role will install pypy, including pip, in the users home directory, create symlinks for easy usage of the newly installed python stack, and adjust paths.   You then can update our inventory file to use the installed python interpreter on your Container Linux nodes with ansible.  
 
 Additionally it becomes extremely usefull to bootstrap contained ansible controller structure into this model.   As such additional features have been added for both bootstraping the pypy for ansible control as well as ansible as a contoller with ssh bastion host proxing enabled.
 ## Role Variables:

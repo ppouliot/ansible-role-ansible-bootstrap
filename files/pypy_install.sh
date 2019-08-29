@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set PYTHON 3 Stable Portable Binary Name
-PYPY_PORTABLE_VERSION='pypy3.5-7.0.0-linux_x86_64-portable'
+PYPY_PORTABLE_VERSION='pypy3.6-7.1.1-linux_x86_64-portable'
 
 echo "Testing for .ansible for bootstrap operations
 if [ ! -d $HOME/.ansible ];
