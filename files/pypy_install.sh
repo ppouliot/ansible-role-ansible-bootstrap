@@ -3,7 +3,7 @@
 # Set PYTHON 3 Stable Portable Binary Name
 PYPY_PORTABLE_VERSION='pypy3.6-7.1.1-linux_x86_64-portable'
 
-echo "Testing for .ansible for bootstrap operations
+echo "Testing for .ansible for bootstrap operations"
 if [ ! -d $HOME/.ansible ];
 then
   echo "Creating folder structure for ansible operations"
