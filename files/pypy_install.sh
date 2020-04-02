@@ -51,7 +51,7 @@ echo "Setting resursive permissions on pypy directory."
 chmod -R ugo+x $HOME/.ansible/pypy
 
 echo "Creating a symlink for easy use of python." 
-ln -f -s $HOME/.ansible/pypy/bin/pypy $HOME/bin/python
+ln -f -s $HOME/.ansible/pypy/bin/pypy3 $HOME/bin/python
 
 echo "Validating symlinked python commands"
 $HOME/bin/python --version
