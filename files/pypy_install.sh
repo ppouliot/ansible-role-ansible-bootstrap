@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # Set PYTHON 3 Stable Portable Binary Name
-PYPY_PORTABLE_VERSION='pypy3.6-7.1.1-linux_x86_64-portable'
+
+# The original pypy portable is not needed as the upstream binaries for x64 linux are now portable
+# PYPY_PORTABLE_VERSION='pypy3.6-7.1.1-linux_x86_64-portable'
+PYPY_PORTABLE_VERSION='pypy3.6-v7.3.0-linux64'
+
 
 echo "Testing for .ansible for bootstrap operations"
 if [ ! -d $HOME/.ansible ];
@@ -26,9 +30,12 @@ exec >> $BOOTSTRAP_LOGFILE 2>&1
 echo "Creating folders and downloading pypy binaries"
 cd $HOME/.ansible/tmp
 echo "Downloading PYPY Portable binary: $PYPY_PORTABLE_VERSION" 
-wget -nv https://bitbucket.org/squeaky/portable-pypy/downloads/$PYPY_PORTABLE_VERSION.tar.bz2 ;
-cd $HOME/.ansible
 
+# As mentioned above upstream binaries are now portable for linux x86_64.  So the previous binaries are no longer needed
+# wget -nv https://bitbucket.org/squeaky/portable-pypy/downloads/$PYPY_PORTABLE_VERSION.tar.bz2 ;
+
+wget -nv https://bitbucket.org/pypy/pypy/downloads/$PYPY_PORTABLE_VERSION.tar.bz2 ;
+cd $HOME/.ansible
 
 echo "Extracting PYPY Portable binary: $PYPY_PORTABLE_VERSION" 
 cd $HOME/.ansible
