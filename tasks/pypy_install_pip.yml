@@ -1,5 +1,6 @@
 #!/usr/bin/env ansible-playbook
 # tasks/pypy_install_pip.yml
 ---
-- name: Use PYPY on CoreOS/Flatcar to install PIP.
-  script: ../files/pypy_install_pip.sh  creates=/home/core/console.txt
+- name: Use PYPY to install PIP.
+  script: "{{ role_path }}/files/pypy_install_pip.sh"
+    creates: "{{ ansible_env.HOME }}/pypy_install_pip.txt
