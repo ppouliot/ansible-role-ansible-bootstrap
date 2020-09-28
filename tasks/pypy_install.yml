@@ -1,5 +1,5 @@
 #!/usr/bin/env ansible-playbook
 ---
+
 - name: Bootstrapping PYPY on CoreOS/Flatcar for Ansible.
-  script: "{{ role_path }}/files/pypy_install.sh"
-    creates: "{{ ansible_env.HOME }}/pypy_install.txt"
+  script: ../files/pypy_install.sh creates="~/pypy_install.txt"
