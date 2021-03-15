@@ -2,7 +2,7 @@
 
 PYTHON_VERSION="3.6"
 # PYPY 7.3.1 has an issue with linked libries on MacOS
-PYPY_VERSION="7.3.0"
+PYPY_VERSION="7.3.3"
 UNAME=`which uname`
 CURL=`which curl`
 WGET=`which wget`
